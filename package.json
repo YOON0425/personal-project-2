@@ -1,0 +1,20 @@
+{
+  "name": "personal-project-2",
+  "version": "1.0.0",
+  "main": "index.js",
+  "repository": "https://github.com/YOON0425/personal-project-2.git",
+  "author": "YOON0425 <dmsqlc0425@naver.com>",
+  "type": "module",
+  "license": "MIT",
+  "scripts": {
+    "format": "prettier --write *.js **/*.js"
+  },
+  "dependencies": {
+    "dotenv": "^16.4.5",
+    "express": "^4.19.2",
+    "mongoose": "^8.3.4"
+  },
+  "devDependencies": {
+    "prettier": "^3.2.5"
+  }
+}
