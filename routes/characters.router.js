@@ -62,7 +62,7 @@ characterRouter.post('/characters.router.js', async (req, res) => {
 
 
 //캐릭터 삭제 API
-router.delete('/characters.routers.js/:characters_id', async (req, res) => {
+characterRouter.delete('/characters.routers.js/:characters_id', async (req, res) => {
   // 삭제할 '해야할 일'의 ID 값을 가져옵니다.
   const { characterID } = req.params;
 
