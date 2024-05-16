@@ -9,7 +9,7 @@ const itemRouter = express.Router();
 /** 아이템 목록 조회 **/
 // localhost:3000/api/goods GET
 itemRouter.get('/items', (req, res) => {
-  return res.status(200).json({ item: (item_code)(item_name) });
+  return res.status(200).json({ items: (item_code)(item_name) });
 });
 
 export default itemRouter;
