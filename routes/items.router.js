@@ -8,7 +8,7 @@ const itemRouter = express.Router();
 
 /** 아이템 목록 조회 **/
 // localhost:3000/api/goods GET
-// routes/todos.router.js
+
 
 itemRouter.get('/items', async (req, res) => {
   // Todo모델을 이용해, MongoDB에서 'order' 값이 가장 높은 '해야할 일'을 찾습니다.
@@ -18,7 +18,7 @@ itemRouter.get('/items', async (req, res) => {
   return res.status(200).json({ itemlist });
 });
 
-export default itemRouter;
+
 
 /** 아이템 상세 조회 **/
 // localhost:3000/api/goods/:goodsId GET
@@ -96,3 +96,5 @@ itemRouter.patch('/items/:item_code', async (req, res) => {
 
   return res.status(200).json({ changedItem });
 });
+
+export default itemRouter;

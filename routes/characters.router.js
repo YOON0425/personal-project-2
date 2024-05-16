@@ -6,19 +6,24 @@ import characters from '../schemas/characters.schema.js'
 // Express.js의 라우터를 생성합니다.
 const characterRouter = express.Router();
 
-characterRouter.get('/characters', (req, res) => {
-  return res.status(200).json({ characters: characters });
-});
-
-export default characterRouter;
-
 //캐릭터 상세조회API
 // localhost:3000/api/goods/:goodsId GET
-characterRouter.get('/characters/:character_id', (req, res) => {
-  const character_id = req.params.character_id; //경로 파라미터 통해 일치 하는거 찾기
-  const findCharacter = characters.find((character) => character.character_id === +character_id);
+characterRouter.get('/characters/:character_id',async (req, res) => {
+  const character_id = req.params; //경로 파라미터 통해 일치 하는거 찾기
+  if(isNaN(character_id)){
+    return res.status(400);
+  }
+  const currentCharacter = await character.findOne({character_id}).exec();
 
-  return res.json({ characters: findCharacter });
+  if(!currentCharacter){
+    return res.status(400);
+  }
+  const characterInfo = {
+    name: currentCharacter.name,
+    health: currentCharacter.health,
+    power: currentCharacter.power
+  };
+  return res.status(200).json(characterInfo);
 });
 
 //캐릭터 생성 API
@@ -71,3 +76,5 @@ characterRouter.delete('/characters/:characters_id', async (req, res) => {
 
   return res.status(200).json({});
 });
+
+export default characterRouter;
