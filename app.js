@@ -13,10 +13,6 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 //app.use(express.static("./assets")); // 정적 파일 서빙하는 미들웨어
 
-app.get('/', (req, res) => {
-  res.send('Hello World!');
-});
-
 app.use('/api', [itemRouter, characterRouter]);
 
 app.listen(PORT, () => {
