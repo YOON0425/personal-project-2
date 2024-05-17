@@ -22,7 +22,7 @@ itemRouter.get('/items', async (req, res) => {
 // localhost:3000/api/goods/:goodsId GET
 itemRouter.get('/items/:item_code', async (req, res) => {
   try{
-    const item_code = pareInt(req.params.item_code ,10);
+    const item_code = parseInt(req.params.item_code ,10);
     const viewItem = await items.findOne({item_code}).exec();
 
     if(!viewItem) {
@@ -33,6 +33,8 @@ itemRouter.get('/items/:item_code', async (req, res) => {
       item_name: viewItem.item_name,
       item_stat: viewItem.item_stat,
     };
+    return res.status(200).json(itemInfo);
+
 } catch (error){
   console.error('Error', error);
   res.status(500).json({message: "Error"});
