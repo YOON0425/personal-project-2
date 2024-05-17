@@ -72,19 +72,18 @@ itemRouter.post('/item', async (req, res) => {
 /** 순서 변경, 할 일 완료/해제, 할 일 내용 변경 **/
 itemRouter.put('/items/:item_code', async (req, res) => {
   const { item_code } = parseInt(req.params.item_code, 10);
-  if (isNaN(item_code)) {
-    return res.status(400);
-  }
+  // if (isNaN(item_code)) {
+  //   return res.status(400);
+  // }
   const { item_name, item_stat } = req.body;
-  if (!item_name) {
-    return res.status(400);
-  } else if (!item_stat) {
-    return res.status(400);
-  }
  
   const updatedItem = await items.findOneAndUpdate(
     {item_code},{item_name, item_stat},{new:true}
   );
+
+  if (!updatedItem){
+    return res.status(404),json({message: "item not found"})
+  }
 
   return res.status(200).json(updatedItem);
 });

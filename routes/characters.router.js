@@ -40,16 +40,9 @@ characterRouter.post('/characters', async (req, res) => {
       .json({ errorMessage: '데이터가 존재하지 않습니다.' });
   }
 
-  // Todo모델을 사용해, MongoDB에서 'order' 값이 가장 높은 '해야할 일'을 찾습니다.
   const characterMaxId = await characters.findOne().sort('-character_id').exec();
-
-  // 'order' 값이 가장 높은 도큐멘트의 1을 추가하거나 없다면, 1을 할당합니다.
   const characterNum = characterMaxId ? characterMaxId.character_id + 1 : 1;
-
-  // Todo모델을 이용해, 새로운 '해야할 일'을 생성합니다.
   const character = new character({ character_id: characterNum, value  });
-
-  // 생성한 '해야할 일'을 MongoDB에 저장합니다.
   await character.save();
 
   const newData = {character_id: character.character_id,}
