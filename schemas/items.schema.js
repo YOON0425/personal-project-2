@@ -11,7 +11,14 @@ const itemSchema = new mongoose.Schema({
         required: true,
     },
     item_stat: {
-        type: mongoose.Schema.Types.Mixed,
+        health: {
+            type:Number,
+            required: true,
+        },
+        power:{
+            type:Number,
+            required: true,
+        }
     },
 
 });
