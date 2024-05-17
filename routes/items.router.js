@@ -1,7 +1,7 @@
 //아이템 목록 조회
 // /routes/goods.js
 import express from 'express';
-import item from '../schemas/items.schema.js'
+import items from '../schemas/items.schema.js'
 
 // Express.js의 라우터를 생성합니다.
 const itemRouter = express.Router();
